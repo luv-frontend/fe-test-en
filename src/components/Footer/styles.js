@@ -8,7 +8,7 @@ export const FooterStyled = styled.footer`
   a {
     display: block;
     color: ${({ theme }) => theme?.colors?.light};
-    margin: 0 45px 0 0;
+    padding: 10px 12px;
   }
 
   @media screen and (min-width: 768px) {
@@ -16,6 +16,8 @@ export const FooterStyled = styled.footer`
 
     a {
       display: inline-block;
+      padding: 0;
+      margin: 0 45px 0 0;
     }
   }
 `;

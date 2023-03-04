@@ -35,8 +35,9 @@ const GlobalStyle = createGlobalStyle`
   .container {
     width: 100%;
     max-width: 960px;
-    margin: 0 auto;
+    margin: 0 auto; 
   }
+
   /* footer alway visible in the bottom */
   .wrap-page {
     display: flex;
