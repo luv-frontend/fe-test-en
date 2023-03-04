@@ -33,8 +33,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .container {
+    width: 100%;
     max-width: 960px;
     margin: 0 auto;
+  }
+  /* footer alway visible in the bottom */
+  .wrap-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    main {
+      flex-grow: 1;
+    }
   }
   /* sprite */
   .sprite { background: url('/sprite.png') no-repeat top left; width: 32px; height: 32px;  } 

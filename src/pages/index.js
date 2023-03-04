@@ -9,10 +9,18 @@ import { useState } from "react";
 import FoodItem from "@/components/FoodItem";
 import styled from "styled-components";
 import Button from "@/components/Button";
+import Loader from "@/components/Loader";
 
 const SectionFoodStyled = styled.section`
   .filter {
     display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 25px 0;
+
+    li {
+      margin: 0 10px;
+    }
   }
 
   .items {
@@ -22,13 +30,28 @@ const SectionFoodStyled = styled.section`
   }
 
   .item {
-    flex-basis: 25%;
+    flex-basis: 50%;
     padding: 4px;
   }
 
   .wrap-button {
     text-align: center;
     margin: 24px 0 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    .filter {
+      overflow-x: hidden;
+      justify-content: center;
+
+      li {
+        margin: 0 42px;
+      }
+    }
+
+    .item {
+      flex-basis: 25%;
+    }
   }
 `;
 
@@ -69,31 +92,46 @@ export default function Home() {
         <BodyWeightBodyFatPercentage />
       </section>
       <SectionFoodStyled className="container">
-        {isLoadingFilter ? null : (
+        {isLoadingFilter && <Loader />}
+        {dataFilter && (
           <ul className="filter">
             {map(dataFilter, ({ id, label, icon, value }) => (
               <li key={id} onClick={handleFilter(value)}>
-                <ButtonTransit label={label} icon={icon} />
+                <ButtonTransit
+                  icon={
+                    <div
+                      class={`sprite ${
+                        icon === "knife" ? "icon_knife" : "icon_cup"
+                      }`}
+                    />
+                  }
+                  label={label}
+                />
               </li>
             ))}
           </ul>
         )}
-        {isLoadingFood && <div>Loading...</div>}
-        {dataFood && (
-          <ul className="items">
-            {map(dataFood, ({ id, label, thumbnail }) => (
-              <li key={id} className="item">
-                <FoodItem label={label} thumbnail={thumbnail} />
-              </li>
-            ))}
-          </ul>
-        )}
-        {dataFood.length !== 0 && hasNextData && (
-          <div className="wrap-button">
-            <Button onClick={fetchMoreFood}>
-              {isLoadingMoreFood ? "Loading..." : "自分の日記をもっと見る"}
-            </Button>
-          </div>
+        {isLoadingFood ? (
+          <Loader />
+        ) : (
+          <>
+            {dataFood.length && (
+              <ul className="items">
+                {map(dataFood, ({ id, label, thumbnail }) => (
+                  <li key={id} className="item">
+                    <FoodItem label={label} thumbnail={thumbnail} />
+                  </li>
+                ))}
+              </ul>
+            )}
+            {dataFood.length !== 0 && hasNextData && (
+              <div className="wrap-button">
+                <Button onClick={fetchMoreFood}>
+                  {isLoadingMoreFood ? "Loading..." : "自分の日記をもっと見る"}
+                </Button>
+              </div>
+            )}
+          </>
         )}
       </SectionFoodStyled>
     </>

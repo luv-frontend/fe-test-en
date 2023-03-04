@@ -2,25 +2,25 @@ const MOCK_FILTER_ITEMS = [
   {
     id: "1",
     label: "Morning",
-    icon: "",
+    icon: "knife",
     value: "morning",
   },
   {
     id: "2",
     label: "Lunch",
-    icon: "",
+    icon: "knife",
     value: "lunch",
   },
   {
     id: "3",
     label: "Dinner",
-    icon: "",
+    icon: "knife",
     value: "dinner",
   },
   {
     id: "4",
     label: "Snack",
-    icon: "",
+    icon: "cub",
     value: "snack",
   },
 ];

@@ -25,11 +25,13 @@ export default function App({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyled />
-        <Header />
-        <main>
-          <Component {...pageProps} />
-        </main>
-        <Footer />
+        <div className="wrap-page">
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </div>
       </ThemeProvider>
     </>
   );
