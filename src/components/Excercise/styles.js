@@ -27,8 +27,8 @@ export const ExcerciseStyled = styled.div`
   }
 
   > .outer-content {
-    max-height: 192px;
-    overflow: auto;
+    max-height: 204px;
+    overflow-y: scroll;
 
     > ul {
       overflow: auto;
