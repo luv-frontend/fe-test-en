@@ -40,11 +40,15 @@ const MOCK_DATA = [
 export default function Footer() {
   return (
     <FooterStyled>
-      {map(MOCK_DATA, ({ id, label, slug }) => (
-        <Link key={id} href={slug}>
-          {label}
-        </Link>
-      ))}
+      <div className="container">
+        <div className="inner">
+          {map(MOCK_DATA, ({ id, label, slug }) => (
+            <Link key={id} href={slug}>
+              {label}
+            </Link>
+          ))}
+        </div>
+      </div>
     </FooterStyled>
   );
 }

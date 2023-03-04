@@ -25,6 +25,11 @@ const SectionFoodStyled = styled.section`
     flex-basis: 25%;
     padding: 4px;
   }
+
+  .wrap-button {
+    text-align: center;
+    margin: 24px 0 0;
+  }
 `;
 
 export default function Home() {
@@ -84,9 +89,11 @@ export default function Home() {
           </ul>
         )}
         {dataFood.length !== 0 && hasNextData && (
-          <Button onClick={fetchMoreFood}>
-            {isLoadingMoreFood ? "Loading..." : "自分の日記をもっと見る"}
-          </Button>
+          <div className="wrap-button">
+            <Button onClick={fetchMoreFood}>
+              {isLoadingMoreFood ? "Loading..." : "自分の日記をもっと見る"}
+            </Button>
+          </div>
         )}
       </SectionFoodStyled>
     </>

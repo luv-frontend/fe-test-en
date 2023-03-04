@@ -30,7 +30,6 @@ export function useFetch(url) {
   }, [url, page]);
 
   const fetchMore = () => {
-    console.log("fetchMore");
     setPage(page + 1);
   };
 

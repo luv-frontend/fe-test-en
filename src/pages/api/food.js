@@ -2,49 +2,49 @@
 
 const MOCK_FOOD_ITEMS = [
   {
-    id: "1",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/m01.jpg",
     slug: "#",
   },
   {
-    id: "2",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/m02.jpg",
     slug: "#",
   },
   {
-    id: "3",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/m03.jpg",
     slug: "#",
   },
   {
-    id: "4",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/l01.jpg",
     slug: "#",
   },
   {
-    id: "5",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/l02.jpg",
     slug: "#",
   },
   {
-    id: "6",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/l03.jpg",
     slug: "#",
   },
   {
-    id: "7",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/d01.jpg",
     slug: "#",
   },
   {
-    id: "8",
+    id: Math.random(),
     label: "05.21.Morning",
     thumbnail: "/photo/d02.jpg",
     slug: "#",
