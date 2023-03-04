@@ -6,6 +6,26 @@ import DateAchievementRate from "@/components/DateAchievementRate";
 import { useFetch } from "@/hooks/useFetch";
 import { map } from "lodash";
 import { useState } from "react";
+import FoodItem from "@/components/FoodItem";
+import styled from "styled-components";
+import Button from "@/components/Button";
+
+const SectionFoodStyled = styled.section`
+  .filter {
+    display: flex;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -4px;
+  }
+
+  .item {
+    flex-basis: 25%;
+    padding: 4px;
+  }
+`;
 
 export default function Home() {
   const [urlFood, setUrlFood] = useState("/api/food");
@@ -15,10 +35,15 @@ export default function Home() {
     error: errorFilter,
   } = useFetch("/api/food-type");
 
+  // mock data has more item
+  const hasNextData = true;
+
   const {
     data: dataFood,
     isLoading: isLoadingFood,
+    isLoadingMore: isLoadingMoreFood,
     error: errorFood,
+    fetchMore: fetchMoreFood,
   } = useFetch(urlFood);
 
   const handleFilter = (value) => () => {
@@ -38,9 +63,9 @@ export default function Home() {
         <DateAchievementRate />
         <BodyWeightBodyFatPercentage />
       </section>
-      <section>
+      <SectionFoodStyled className="container">
         {isLoadingFilter ? null : (
-          <ul>
+          <ul className="filter">
             {map(dataFilter, ({ id, label, icon, value }) => (
               <li key={id} onClick={handleFilter(value)}>
                 <ButtonTransit label={label} icon={icon} />
@@ -48,7 +73,22 @@ export default function Home() {
             ))}
           </ul>
         )}
-      </section>
+        {isLoadingFood && <div>Loading...</div>}
+        {dataFood && (
+          <ul className="items">
+            {map(dataFood, ({ id, label, thumbnail }) => (
+              <li key={id} className="item">
+                <FoodItem label={label} thumbnail={thumbnail} />
+              </li>
+            ))}
+          </ul>
+        )}
+        {dataFood.length !== 0 && hasNextData && (
+          <Button onClick={fetchMoreFood}>
+            {isLoadingMoreFood ? "Loading..." : "自分の日記をもっと見る"}
+          </Button>
+        )}
+      </SectionFoodStyled>
     </>
   );
 }

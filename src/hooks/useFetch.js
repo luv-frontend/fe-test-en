@@ -1,25 +1,44 @@
 import { useState, useEffect } from "react";
 
 export function useFetch(url) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
-      setIsLoading(true);
+      if (page === 1) {
+        setIsLoading(true);
+      } else {
+        setIsLoadingMore(true);
+      }
+
       try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setData(data);
+        const response = await fetch(`${url}?page=${page}`);
+        const newData = await response.json();
+        page === 1 ? setData(newData) : setData([...data, ...newData]);
       } catch (error) {
         setError(error);
       } finally {
         setIsLoading(false);
+        setIsLoadingMore(false);
       }
     }
     fetchData();
-  }, [url]);
+  }, [url, page]);
 
-  return { data, isLoading, error };
+  const fetchMore = () => {
+    console.log("fetchMore");
+    setPage(page + 1);
+  };
+
+  return {
+    data,
+    isLoading,
+    error,
+    isLoadingMore,
+    fetchMore,
+  };
 }

@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyled from "@/components/GlobalStyled";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const theme = {
   colors: {
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }) {
         <main>
           <Component {...pageProps} />
         </main>
+        <Footer />
       </ThemeProvider>
     </>
   );

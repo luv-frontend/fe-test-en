@@ -14,8 +14,22 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
   * {
     box-sizing: border-box;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
   }
 `;
 
