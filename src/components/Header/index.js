@@ -15,7 +15,7 @@ export default function Header() {
           <NavStyled>
             <ul>
               <li>
-                <Link href={"#"}>
+                <Link href={"/my-record"}>
                   <div className="sprite icon_memo" /> 自分の記録
                 </Link>
               </li>
@@ -40,7 +40,7 @@ export default function Header() {
             {isOpen && (
               <ul className="draw" ref={ref}>
                 <li className="draw__item">
-                  <Link href={"#"}>自分の記録</Link>
+                  <Link href={"/my-record"}>自分の記録</Link>
                 </li>
                 <li className="draw__item">
                   <Link href={"#"}>体重グラフ</Link>
@@ -52,7 +52,7 @@ export default function Header() {
                   <Link href={"#"}>選択中のコース</Link>
                 </li>
                 <li className="draw__item">
-                  <Link href={"#"}>コラム一覧</Link>
+                  <Link href={"/column"}>コラム一覧</Link>
                 </li>
                 <li className="draw__item">
                   <Link href={"#"}>設定</Link>
