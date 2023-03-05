@@ -11,4 +11,5 @@ How to run this project
 3. npm run start
    Then go to http://localhost:3000
 
-The most logic about fetch data are in Home page, other page just show UI
+The most logic about fetch data are in Home page, other page just show UI.
+PS: The design use 2 type fonts, but in the styleguild just show only one (miss one)
