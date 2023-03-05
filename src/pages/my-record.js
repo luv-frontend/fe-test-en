@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import DiaryItem from "@/components/DiaryItem";
 import EntryItem from "@/components/EntryItem";
 import Excercise from "@/components/Excercise";
+import Graph from "@/components/Graph";
 import { map } from "lodash";
 import Link from "next/link";
 import React from "react";
@@ -24,6 +25,11 @@ const MyRecordStyled = styled.div`
         margin: 0;
       }
     }
+  }
+
+  .graph-demo {
+    padding: 20px 0;
+    background-color: ${({ theme }) => theme?.colors?.dark["500"]};
   }
 
   .exercise {
@@ -108,6 +114,9 @@ export default function MyRecord() {
             />
           </Link>
         ))}
+      </section>
+      <section className="graph-demo">
+        <Graph />
       </section>
       <section className="exercise">
         <Excercise

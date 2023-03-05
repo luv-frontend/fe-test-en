@@ -1,8 +1,6 @@
 import Head from "next/head";
 
-import BodyWeightBodyFatPercentage from "@/components/BodyWeightBodyFatPercentage";
 import ButtonTransit from "@/components/ButtonTransit";
-import DateAchievementRate from "@/components/DateAchievementRate";
 import { useFetch } from "@/hooks/useFetch";
 import { map } from "lodash";
 import { useState } from "react";
@@ -10,6 +8,31 @@ import FoodItem from "@/components/FoodItem";
 import styled from "styled-components";
 import Button from "@/components/Button";
 import Loader from "@/components/Loader";
+import CirclePercent from "@/components/CirclePercent";
+import Graph from "@/components/Graph";
+
+const HomePageStyled = styled.div`
+  .visual {
+    > * {
+      &:last-child {
+        background-color: ${({ theme }) => theme?.colors?.dark["500"]};
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .visual {
+      display: flex;
+      > * {
+        &:first-child {
+          flex-basis: 40%;
+        }
+        &:last-child {
+          flex-basis: 60%;
+        }
+      }
+    }
+  }
+`;
 
 const SectionFoodStyled = styled.section`
   .filter {
@@ -83,13 +106,17 @@ export default function Home() {
   };
 
   return (
-    <>
+    <HomePageStyled>
       <Head>
         <title>Home page</title>
       </Head>
-      <section>
-        <DateAchievementRate />
-        <BodyWeightBodyFatPercentage />
+      <section className="visual">
+        <CirclePercent
+          thumbnail="/photo/mainPhoto.png"
+          text="05/21"
+          percentage={75}
+        />
+        <Graph />
       </section>
       <SectionFoodStyled className="container">
         {isLoadingFilter && <Loader />}
@@ -134,6 +161,6 @@ export default function Home() {
           </>
         )}
       </SectionFoodStyled>
-    </>
+    </HomePageStyled>
   );
 }
